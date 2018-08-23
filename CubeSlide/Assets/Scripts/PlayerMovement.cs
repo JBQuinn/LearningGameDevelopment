@@ -19,16 +19,20 @@ public class PlayerMovement : MonoBehaviour {
 		rb.AddForce(0,0,forwardForce * Time.deltaTime);
 
 		if ( right ) {
-			rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0);
+			rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 			right = false;
 		}
 		if ( left ) {
-			rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
+			rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 			left = false;
 		}
 		if ( jump ) {
 			rb.AddForce(0, jumpForce * Time.deltaTime, 0);
 			jump = false;
+		}
+
+		if ( rb.position.y < 0f) {
+			FindObjectOfType<GameManager>().EndGame();
 		}
 
 	}
