@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.9921569, g: 1, b: 1, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.03
+  m_FogDensity: 0.02
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53557bf490354be4e82ab1fe70b75064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restartDelay: 1
+  restartDelay: 3
 --- !u!4 &422648649
 Transform:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ Prefab:
     - target: {fileID: 114546171914097298, guid: f89cc01a32ba0e54c9d9b79863d68b56,
         type: 2}
       propertyPath: sidewaysForce
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114546171914097298, guid: f89cc01a32ba0e54c9d9b79863d68b56,
         type: 2}
@@ -284,6 +284,11 @@ Prefab:
       propertyPath: left
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114546171914097298, guid: f89cc01a32ba0e54c9d9b79863d68b56,
+        type: 2}
+      propertyPath: followingCamera
+      value: 
+      objectReference: {fileID: 534669904}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f89cc01a32ba0e54c9d9b79863d68b56, type: 2}
   m_IsPrefabAsset: 0
@@ -334,7 +339,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -597,12 +602,13 @@ MonoBehaviour:
   rb: {fileID: 1032526475}
   forwardForce: 2500
   acceleration: 1
-  sidewaysForce: 15
+  sidewaysForce: 10
   jumpForce: 25000
   left: 0
   right: 0
   jump: 0
   onGround: 1
+  followingCamera: {fileID: 534669904}
 --- !u!114 &1032526477
 MonoBehaviour:
   m_ObjectHideFlags: 0

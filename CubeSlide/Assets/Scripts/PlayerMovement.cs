@@ -15,17 +15,25 @@ public class PlayerMovement : MonoBehaviour {
 	public bool right = false;
 	public bool jump = false;
 	public bool onGround = true;
+
+	private float maxFOV = 100;
+	private float fieldOfView;
+	public Camera followingCamera;
 	
 	void Start () {
 		rb = player.GetComponent<Rigidbody>();
 		maxForwardForce = forwardForce * 10f;
+		fieldOfView = followingCamera.fieldOfView;
+		print(fieldOfView);
 	}
 
 	// This is using FixedUpdate to apply fixes after
 	// a set number of frames instead of after every frame
 	void FixedUpdate () {
 		//Increase forward force
-		forwardForce = Mathf.Clamp((forwardForce+acceleration),0, maxForwardForce);
+		forwardForce = Mathf.Clamp((forwardForce+acceleration), 0, maxForwardForce);
+		//Increase the Field of View
+		fieldOfView = Mathf.Clamp((fieldOfView + .01f), 40, maxFOV);
 		//Applying a force on the z, based on how much time has passed
 		rb.AddForce(0,0,forwardForce * Time.deltaTime);
 		if ( right ) {
@@ -41,6 +49,7 @@ public class PlayerMovement : MonoBehaviour {
 			FindObjectOfType<GameManager>().EndGame();
 		}
 
+		followingCamera.fieldOfView = fieldOfView;
 	}
 
 	//Check if the keys to move have been pressed

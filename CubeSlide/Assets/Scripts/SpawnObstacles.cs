@@ -6,7 +6,7 @@ public class SpawnObstacles : MonoBehaviour {
 	public GameObject obstaclePrefab; //This is the obstacle prefab we will generate along the path
 	public GameObject ground; //This is the ground GameObject
 	public float depthSpacing = 50f; //How far apart the obstacles should be depth wise
-	float[] positions = {-6.5f, -4.5f, -2.5f, 0f, 2.5f, 4.5f, 6.5f}; //The 7 different positions the obstacles can be in
+	float[] positions = {-6f, -3f, 0f, 3f, 6f,}; //The 7 different positions the obstacles can be in
 	private int counter = 0; //Counts how many rows have been created
 	private int indexOfLastHole = 0;
 
